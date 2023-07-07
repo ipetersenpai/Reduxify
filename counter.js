@@ -5,6 +5,7 @@ Step of logic:
 
 const { createStore } = require("redux");
 //Step 1: Initial State
+
 const initialState = {
   count: 0,
 };
