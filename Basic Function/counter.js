@@ -49,9 +49,10 @@ const resetAction = () => {
   };
 };
 //increase by amount action creator
-const increaseByAmtAction = () => {
+const increaseByAmtAction = (anyAmount) => {
   return {
     type: "INCREASE_BY_AMT",
+    payload: anyAmount,
   };
 };
 //Step 3: Reducer (Logic that will make changes on our state) you also call it as a listeners
@@ -69,6 +70,10 @@ const counterReducer = (state = initialState, action) => {
     return {
       count: (state.count = 0),
     };
+  } else if (action.type === "INCREASE_BY_AMT") {
+    return {
+      count: state.count + action.payload,
+    };
   }
 };
 //Step 4: store
@@ -80,10 +85,8 @@ store.subscribe(() => {
   console.log(data);
 });
 //dispatch action
-store.dispatch(incrementAction());
-store.dispatch(incrementAction());
-store.dispatch(incrementAction());
+store.dispatch(increaseByAmtAction(20));
+store.dispatch(decrementAction());
 store.dispatch(decrementAction());
 store.dispatch(resetAction());
-store.dispatch(incrementAction());
 store.dispatch(incrementAction());

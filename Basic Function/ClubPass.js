@@ -12,6 +12,7 @@ const customerAgeRequire = () => {
 };
 
 const ageReducer = (state = initialState, action) => {
+  console.log(action);
   if (action.type === 18 || action.requireAge >= 18) {
     return {
       output: "You can enter the club!",
